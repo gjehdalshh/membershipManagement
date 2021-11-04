@@ -15,7 +15,7 @@
 				<img class="change_img" alt="" src="/res/img/change.png">
 			</div>
 		</div>
-		
+		<div></div>
 		<div class="flex_div" id="border">
 			<div class="flex_div">
 				<div>
