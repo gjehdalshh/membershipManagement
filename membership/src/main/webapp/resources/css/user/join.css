@@ -50,13 +50,30 @@ body {
     background-color: aliceblue;
 }
 
-#postcode {
-	width: 300px;    
-	height: 45px;
+#postcode, #roadAddr, #detailAddr, #extraAddr {   
+	height: 40px;
     border-radius: 10px;
     border: 0.1px solid darkgray;
     padding: 10 10 5;
-    font-size: 20px;
+}
+
+#postcode{
+	width: 300px;
+	font-size: 20px;
+}
+#roadAddr{
+	width: 500px;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+#detailAddr{
+	font-size: 15px;
+	width: 324px;
+}
+
+#extraAddr{
+	font-size: 15px;
+	width: 170px;
 }
 
 .addrBtn {
@@ -68,10 +85,11 @@ body {
     margin-left: 10px;
 }
 
+
 .flex_div {
 	display: flex;
     align-items: center;
- 	margin: 10px 0px;
+ 	margin: 30 0 10;
 }
 
 

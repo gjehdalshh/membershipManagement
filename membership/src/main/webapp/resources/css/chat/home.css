@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#main_div {
+	width: 1024px;
+	margin: auto;
+	text-align: center;
+}
+
+#border {
+	border-bottom: 0.1px solid darkgray;
+}
+
+.flex_div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.top_div {
+	width: 600px;
+	margin: auto;
+	position: relative;
+}
+
+.main_logo {
+	text-align: center;
+}
+
+.title_div {
+	position: absolute;
+	left: 37%;
+	font-size: 30px;
+	font-family: cursive;
+	top: 67%;
+}
+
+.sub_div {
+	width: 600px;
+	margin: auto;
+}
+
+.sub_title {
+	font-size: 25px;
+}
+
+.change_img {
+	width: 30;
+	height: 30;
+}
+
+.profile_img{
+	width: 70;
+	height: 70;
+	margin-right: 25px;
+}
+
+.my_name {
+	font-size: 25px;	
+}
+
+.font_size15{
+	font-size: 15px;
+}
+
+.font_size20{
+	font-size: 20px;
+}
+.friend_div{
+	padding: 10px;
+}
+
+.friendImg{
+	width: 45px;
+	margin-right: 25px;
+}
+
+.friend_name{
+	font-size: 20px;
+}
+
+.flex {
+	display: flex;
+    justify-content: space-around;
+}
+
+.category {
+	width: 300px;
+	padding: 25 0;
+	font-size: 25;
+}
+
+
+.div1 {
+	height: 500px;
+}
+
+
+
+

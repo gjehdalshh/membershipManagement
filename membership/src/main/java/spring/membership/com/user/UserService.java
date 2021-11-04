@@ -39,6 +39,10 @@ public class UserService {
 			}
 		}
 		
+		if(!dto.getId().contains("@")) {
+			return 5;
+		}
+		
 		dto.setPw(bcrypt.encode(dto.getPw()));
 
 		return mapper.intUser(dto);

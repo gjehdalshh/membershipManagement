@@ -62,9 +62,6 @@ public class UserController {
 		return val;
 	}
 	
-	@GetMapping("/chat/home")
-	public void main() {}
-	
 	/* ----------------- naver ----------------- */
 
 	// naverLoginBO

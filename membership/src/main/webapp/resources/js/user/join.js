@@ -1,4 +1,9 @@
 var join_btn = document.querySelector('.join_btn')
+var main_logo = document.querySelector('.main_logo')
+
+main_logo.onclick = function() {
+	location.href = '/user/login'
+}
 
 join_btn.onclick = function() {
 	var id = document.querySelector('.user_id')
@@ -48,7 +53,9 @@ join_btn.onclick = function() {
 			case 4:
 				alert('닉네임이 이미 존재합니다.')
 				break;
-
+			case 5:
+				alert('아이디를 이메일 형식으로 작성해주세요')
+				break;
 		}
 	})
 }
