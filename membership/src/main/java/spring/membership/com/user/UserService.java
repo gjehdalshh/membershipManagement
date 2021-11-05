@@ -61,7 +61,7 @@ public class UserService {
 			return 3;
 		}
 		
-		hs.setAttribute("loginUser", vo);
+		hs.setAttribute("id", vo);
 	
 		return 1;
 	}
