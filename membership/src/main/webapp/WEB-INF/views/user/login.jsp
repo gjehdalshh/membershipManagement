@@ -35,4 +35,4 @@
 </div>
 
 
-<script defer src="/res/js/user/login.js?ver=8"></script>
+<script defer src="/res/js/user/login.js?ver=2"></script>

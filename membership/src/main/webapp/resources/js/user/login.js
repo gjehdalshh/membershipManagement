@@ -29,7 +29,7 @@ login_btn.onclick = function() {
 		switch(data.result) {
 			case 1:
 				alert('로그인이 성공하셨습니다.')
-				location.href = '/chat/home'
+				location.href = '/chat/home?page='+1
 				break;
 			case 2:
 				alert('아이디가 존재하지 않습니다.')

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="spring.membership.com.main.MainMapper">
-
+	<select id="searchUserList" resultType="UserDomain">
+		SELECT * FROM usertable
+		WHERE user_name LIKE '%#{user_name}%';
+	</select>
 </mapper>
