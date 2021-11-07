@@ -1,11 +1,27 @@
 var change_img = document.querySelector('.change_img')
 var main_div = document.querySelector('#main_div')
 var search_div = document.querySelector('#search_div')
-var search_input = document.querySelector('.search_input')
 var position_img = document.querySelector('#position_img')
 
 position_img.onclick = function() {
+	var search_input = document.querySelector('.search_input')
 	
+	var param = {
+		user_name: search_input.value
+	}
+	console.log(param)
+	
+	fetch(`/chat/SearchProc`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body:JSON.stringify(param)
+	}).then(function(res) {
+		return res.json()
+	}).then(function(data) {
+		console.log('확인')
+	})
 }
 
 

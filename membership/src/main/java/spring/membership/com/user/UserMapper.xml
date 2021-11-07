@@ -4,15 +4,37 @@
 	<!-- 유저 생성 -->
 	<insert id="intUser">
 		INSERT INTO usertable
-		(id, pw, nick, user_name, postcode, roadAddr, detailAddr, extraAddr)
+		(id, pw, nick, user_name,
+		postcode, roadAddr, detailAddr, extraAddr)
 		VALUES
-		(#{id}, #{pw}, #{nick}, #{user_name}, #{postcode}, #{roadAddr}, #{detailAddr}, #{extraAddr});
+		(#{id}, #{pw},
+		#{nick}, #{user_name}, #{postcode}, #{roadAddr}, #{detailAddr},
+		#{extraAddr});
 	</insert>
 
 	<!-- 유저 정보 검색 -->
 	<select id="selUser" resultType="UserDomain">
 		SELECT * FROM usertable
-		WHERE id = #{id} or
+		WHERE id
+		= #{id} or
 		nick = #{nick};
 	</select>
+	
+	<select id="selUserId" resultType="UserDomain">
+		select *
+		from usertable
+		where
+		i_user = #{i_user}
+	</select>
+
+	<update id="changeNm">
+		UPDATE usertable SET
+		user_name = #{user_name}
+		where i_user = #{i_user}
+	</update>
 </mapper>
+
+
+
+
+

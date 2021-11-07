@@ -9,4 +9,6 @@ import spring.membership.com.dto.UserDTO;
 public interface UserMapper {
 	int intUser(UserDTO dto);
 	UserDomain selUser(UserDTO dto);
+	UserDomain selUserId(UserDTO dto);
+	int changeNm(UserDTO dto);
 }

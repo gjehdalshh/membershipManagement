@@ -11,7 +11,7 @@
 		<div class="flex_bet">
 			<div class="search_title">친구 검색</div>
 			<div id="position_rel" class="flex">
-					<div><input class="search_input" tpye="text" id="user_name"></div>
+					<div><input class="search_input" tpye="text" name="user_name"></div>
 					<img id="position_img" alt="" src="/res/img/search.svg">
 				<div onclick="movePage(1)" class="back_div">취소</div>
 			</div>
@@ -114,4 +114,4 @@
 
 
 
-<script defer src="/res/js/chat/home.js?ver=10"></script>
+<script defer src="/res/js/chat/home.js?ver=33"></script>

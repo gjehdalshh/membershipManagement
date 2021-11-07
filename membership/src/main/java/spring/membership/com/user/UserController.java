@@ -27,7 +27,7 @@ import spring.membership.com.dto.UserDTO;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserService service;
 
@@ -36,32 +36,44 @@ public class UserController {
 		String naverAuthUrl = naverLoginBO.getAuthzationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/user/loginProc")
 	public Map<String, Object> loginProc(@RequestBody UserDTO dto) {
-		
+
 		Map<String, Object> val = new HashMap<String, Object>();
-		
+
 		val.put("result", service.login(dto));
-		
+
 		return val;
 	}
-	
+
 	@GetMapping("/user/join")
-	public void join() {}
-	
+	public void join() {
+	}
+
 	@ResponseBody
 	@PostMapping("/user/joinProc")
 	public Map<String, Object> joinProc(@RequestBody UserDTO dto) {
-	
+
 		Map<String, Object> val = new HashMap<String, Object>();
-		
+
 		val.put("result", service.insUser(dto));
-		
+
 		return val;
 	}
-	
+
+	@ResponseBody
+	@PostMapping("/user/changeNm")
+	public Map<String, Object> changeNm(@RequestBody UserDTO dto) {
+
+		Map<String, Object> val = new HashMap<String, Object>();
+
+		val.put("result", service.changeNm(dto));
+
+		return val;
+	}
+
 	/* ----------------- naver ----------------- */
 
 	// naverLoginBO
@@ -73,12 +85,11 @@ public class UserController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
 	}
-	
+
 	@RequestMapping(value = "/user/naverCallBack", method = { RequestMethod.GET, RequestMethod.POST })
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, RedirectAttributes re)
-			throws IOException, ParseException {
-		
-		
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session,
+			RedirectAttributes re) throws IOException, ParseException {
+
 		System.out.println("여기는 callback");
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
@@ -96,18 +107,17 @@ public class UserController {
 		Object obj = parser.parse(apiResult);
 		JSONObject jsonObj = (JSONObject) obj;
 
-		//3. 데이터 파싱
-		//Top레벨 단계 _response 파싱
-		JSONObject response_obj = (JSONObject)jsonObj.get("response");
-		//response의 nickname값 파싱
-		String nickname = (String)response_obj.get("nickname");
-		
-		
-		//4.파싱 닉네임 세션으로 저장
-		session.setAttribute("sessionId",nickname);
-		//세션 생성
+		// 3. 데이터 파싱
+		// Top레벨 단계 _response 파싱
+		JSONObject response_obj = (JSONObject) jsonObj.get("response");
+		// response의 nickname값 파싱
+		String nickname = (String) response_obj.get("nickname");
+
+		// 4.파싱 닉네임 세션으로 저장
+		session.setAttribute("sessionId", nickname);
+		// 세션 생성
 		model.addAttribute("result", apiResult);
-		
+
 		return "redirect:/chat/home";
 	}
 }

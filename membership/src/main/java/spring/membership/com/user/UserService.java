@@ -65,6 +65,14 @@ public class UserService {
 	
 		return 1;
 	}
+	
+	// 이름 변경
+	public int changeNm(UserDTO dto) {
+		
+		UserDomain vo = mapper.selUserId(dto);
+		
+		return 1;
+	}
 
 }
 
