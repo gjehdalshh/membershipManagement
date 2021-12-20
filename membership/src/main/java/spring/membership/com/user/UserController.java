@@ -31,6 +31,8 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
+	
+	/* ---------------- 로그인 --------------------- */
 	@GetMapping("/user/login")
 	public void login(Model model, HttpSession session) {
 		String naverAuthUrl = naverLoginBO.getAuthzationUrl(session);
@@ -48,9 +50,9 @@ public class UserController {
 		return val;
 	}
 
+	/* ----------------- 회원가입 ---------------- */
 	@GetMapping("/user/join")
-	public void join() {
-	}
+	public void join() {}
 
 	@ResponseBody
 	@PostMapping("/user/joinProc")
@@ -62,7 +64,14 @@ public class UserController {
 
 		return val;
 	}
+	
+	
+	/* ------------- 아이디, 비밀번호 찾기 -------------- */
+	@GetMapping("/user/findInfo")
+	public void findInfo() {}
 
+	
+	/* ------------------ 회원 정보 변경 ------------------- */
 	@ResponseBody
 	@PostMapping("/user/changeNm")
 	public Map<String, Object> changeNm(@RequestBody UserDTO dto) {
@@ -70,6 +79,28 @@ public class UserController {
 		Map<String, Object> val = new HashMap<String, Object>();
 
 		val.put("result", service.changeNm(dto));
+
+		return val;
+	}
+	
+	@ResponseBody
+	@PostMapping("/user/changePw")
+	public Map<String, Object> changePw(@RequestBody UserDTO dto) {
+
+		Map<String, Object> val = new HashMap<String, Object>();
+
+		val.put("result", service.changePw(dto));
+
+		return val;
+	}
+	
+	@ResponseBody
+	@PostMapping("/user/changeNick")
+	public Map<String, Object> changeNick(@RequestBody UserDTO dto) {
+
+		Map<String, Object> val = new HashMap<String, Object>();
+
+		val.put("result", service.changeNick(dto));
 
 		return val;
 	}

@@ -3,6 +3,48 @@
 <mapper namespace="spring.membership.com.main.MainMapper">
 	<select id="searchUserList" resultType="UserDomain">
 		SELECT * FROM usertable
-		WHERE user_name LIKE '%#{user_name}%';
+		WHERE user_name LIKE CONCAT('%', #{user_name}, '%');
 	</select>
+
+	<select id="selRelation" resultType="RelationDomain">
+		SELECT * from relationtable
+		WHERE i_userFrom = #{i_userFrom} and i_userTo = #{i_userTo};
+	</select>
+
+	<select id="selFriendList" resultType="RelationDomain">
+		SELECT a.i_userFrom, a.i_userTo,
+		b.user_name, b.quotes, b.i_user from relationtable a
+		LEFT JOIN usertable b
+		ON a.i_userTo = b.i_user;
+	</select>
+
+	<insert id="insFriendFrom">
+		INSERT INTO relationtable
+		(i_userFrom, i_userTo)
+		VALUES
+		(#{i_userFrom} , #{i_userTo});
+	</insert>
+
+	<insert id="insFriendTo">
+		INSERT INTO relationtable
+		(i_userFrom, i_userTo)
+		VALUES
+		(#{i_userTo} , #{i_userFrom});
+	</insert>
+
+	<delete id="delFriendFrom">
+		DELETE FROM relationtable
+		WHERE i_userFrom = #{i_userFrom} and i_userTo = #{i_userTo}
+	</delete>
+
+	<delete id="delFriendTo">
+		DELETE FROM relationtable
+		WHERE i_userFrom = #{i_userTo} and i_userTo = #{i_userFrom}
+	</delete>
+
 </mapper>
+
+
+
+
+

@@ -38,10 +38,15 @@ body {
 	position: relative;
 }
 
+.form {
+	margin: 0px;
+}
+
 #position_img {
 	position: absolute;
     right: 55;
     width: 35;
+    top: 4;
 }
 
 .back_div{
@@ -55,6 +60,10 @@ body {
 	border-bottom: 0.1px solid darkgray;
     padding-bottom: 10px;
     margin-bottom: 20px;
+}
+
+.insFriend {
+	margin-left: 30px;
 }
 
 

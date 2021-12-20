@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.membership.com.domain.UserDomain;
+import spring.membership.com.dto.RelationDTO;
 import spring.membership.com.dto.UserDTO;
 
 @Controller
@@ -31,9 +32,41 @@ public class MainController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
+	// 메인 화면 
 	@GetMapping("/chat/home")
-	public void home(Model model, UserDTO dto) {}
+	public void home(Model model, UserDTO dto, RelationDTO relDto) {
+		// 친구 검색
+		model.addAttribute("userList", service.searchUserList(dto));
+		
+		// 친구 리스트 뿌리기
+		model.addAttribute("friendList", service.selFriendList(relDto));
+	}
 	
+	// 친구 추가
+	@ResponseBody
+	@PostMapping("/chat/insFriend")
+	public Map<String, Object> insFriend(@RequestBody RelationDTO dto) {
+		
+		Map<String, Object> val = new HashMap<String, Object>();
+		
+		val.put("result", service.insFriend(dto));
+		
+		return val;
+	}
+	
+	// 친구 삭제
+	@ResponseBody
+	@PostMapping("/chat/delFriend")
+	public Map<String, Object> delFriend(@RequestBody RelationDTO dto) {
+		Map<String, Object> val = new HashMap<String, Object>();
+		
+		val.put("result", service.delFriend(dto));
+		
+		return val;
+	}
+	
+	
+	/* list ajax로 뿌리기
 	@ResponseBody
 	@PostMapping("/chat/SearchProc")
 	public Map<String, Object> SearchProc(@RequestBody UserDTO dto) {
@@ -46,6 +79,10 @@ public class MainController {
 		
 		return val;
 	}
+	*/
+	
+	@GetMapping("/chat/channelList")
+	public void channelList() {}
 	
 	@GetMapping("/chat/chatRoom")
 	public void chatRoom() {

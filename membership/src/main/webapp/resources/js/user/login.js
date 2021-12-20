@@ -1,5 +1,9 @@
 var moveJoin = document.querySelector('.move_join')
 
+function findInfo(page) {
+	location.href=`/user/findInfo?page=`+page
+}
+
 moveJoin.onclick = function() {
 	location.href = '/user/join'
 }

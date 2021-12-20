@@ -4,11 +4,11 @@
 	<!-- 유저 생성 -->
 	<insert id="intUser">
 		INSERT INTO usertable
-		(id, pw, nick, user_name,
+		(id, pw, nick, user_name, ph,
 		postcode, roadAddr, detailAddr, extraAddr)
 		VALUES
 		(#{id}, #{pw},
-		#{nick}, #{user_name}, #{postcode}, #{roadAddr}, #{detailAddr},
+		#{nick}, #{user_name}, #{ph}, #{postcode}, #{roadAddr}, #{detailAddr},
 		#{extraAddr});
 	</insert>
 
@@ -21,17 +21,31 @@
 	</select>
 	
 	<select id="selUserId" resultType="UserDomain">
-		select *
-		from usertable
-		where
-		i_user = #{i_user}
+		SELECT * FROM usertable
+		WHERE i_user = #{i_user}
 	</select>
 
+	<!-- 이름 변경 -->
 	<update id="changeNm">
 		UPDATE usertable SET
 		user_name = #{user_name}
 		where i_user = #{i_user}
 	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="changePw">
+		UPDATE usertable SET
+		pw = #{pw}
+		where i_user = #{i_user}
+	</update>
+	
+	<!-- 별명 변경 -->
+	<update id="changeNick">
+		UPDATE usertable SET
+		nick = #{nick}
+		where i_user = #{i_user}
+	</update>
+	
 </mapper>
 
 

@@ -34,6 +34,12 @@
 			</div>
 		</div>
 		<div>
+			<div class="textPw">휴대전화</div>
+			<div>
+				<input class="user_ph" type="text" name="user_ph" placeholder="-제외">
+			</div>
+		</div>
+		<div>
 			<div class="textNick">닉네임</div>
 			<div>
 				<input class="user_nick" type="text" name="user_nick">
@@ -60,7 +66,7 @@
 	</div>
 </div>
 
-<script defer src="/res/js/user/join.js?ver=5"></script>
+<script defer src="/res/js/user/join.js?ver=6"></script>
 <script defer src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script defer
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

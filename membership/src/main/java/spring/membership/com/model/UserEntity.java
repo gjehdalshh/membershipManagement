@@ -13,7 +13,22 @@ public class UserEntity {
 	private String roadAddr;
 	private String extraAddr;
 	private String detailAddr;
+	private String quotes;
+	private String ph;
 	
+	
+	public String getPh() {
+		return ph;
+	}
+	public void setPh(String ph) {
+		this.ph = ph;
+	}
+	public String getQuotes() {
+		return quotes;
+	}
+	public void setQuotes(String quotes) {
+		this.quotes = quotes;
+	}
 	public int getI_user() {
 		return i_user;
 	}

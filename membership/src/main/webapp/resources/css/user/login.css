@@ -68,6 +68,9 @@ body {
 	margin-top: 10px;
 }
 
+.find_id, .find_pw, .move_join, .login_btn {
+	cursor: pointer;
+}
 
 
 

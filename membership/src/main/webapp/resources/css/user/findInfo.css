@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+#main_div {
+	width: 1024px;
+	margin: auto;
+	margin-top: 100px;
+	text-align: center;
+}
+
+.main_logo {
+	width: 400px;
+	height: 200px;
+}
+
+.title {
+	font-size: 35px;
+    font-family: cursive;
+    margin-bottom: 40px;
+}
+
+.textName, .textPh, .textId {
+	font-size: 20px;
+    font-weight: 100;
+    text-align: initial;
+    width: 500px;
+    margin: 5 auto 15;
+}
+
+.user_name, .user_ph, .user_id {
+	width: 500px;
+    height: 45px;
+    border-radius: 10px;
+    border: 0.1px solid darkgray;
+    padding: 10 10 5;
+    font-size: 25px;
+}
+
+.findIdBtn {
+	width: 500px;
+    height: 45px;
+    border-radius: 10px;
+    border: 0.1px solid darkgray;
+    font-size: 25px;
+    margin: 30 0 200;
+    background-color: aliceblue;
+}

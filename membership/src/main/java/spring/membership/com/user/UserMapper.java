@@ -11,4 +11,6 @@ public interface UserMapper {
 	UserDomain selUser(UserDTO dto);
 	UserDomain selUserId(UserDTO dto);
 	int changeNm(UserDTO dto);
+	int changePw(UserDTO dto);
+	int changeNick(UserDTO dto);
 }

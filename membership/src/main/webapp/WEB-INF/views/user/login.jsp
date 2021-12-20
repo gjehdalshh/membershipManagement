@@ -27,8 +27,8 @@
 	</div>
 	<div class="find_div">
 		<div class="findSub_div">
-			<div>아이디 찾기</div>
-			<div>비밀번호 찾기</div>
+			<div onclick="findInfo(1)" class="find_id">아이디 찾기</div>
+			<div onclick="findInfo(2)" class="find_pw">비밀번호 찾기</div>
 			<div class="move_join">회원가입</div>
 		</div>
 	</div>

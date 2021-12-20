@@ -15,6 +15,7 @@ join_btn.onclick = function() {
 	var roadAddr = document.querySelector('#roadAddr')
 	var detailAddr = document.querySelector('#detailAddr')
 	var extraAddr = document.querySelector('#extraAddr')
+	var ph = document.querySelector('.user_ph')
 
 	var param = {
 		id: id.value,
@@ -25,7 +26,8 @@ join_btn.onclick = function() {
 		postcode: postcode.value,
 		roadAddr: roadAddr.value,
 		detailAddr: detailAddr.value,
-		extraAddr: extraAddr.value
+		extraAddr: extraAddr.value,
+		ph: ph.value
 	}
 
 	console.log(param)
@@ -55,6 +57,9 @@ join_btn.onclick = function() {
 				break;
 			case 5:
 				alert('아이디를 이메일 형식으로 작성해주세요')
+				break;
+			case 6:
+				alert('- 없이 작성해주세요')
 				break;
 		}
 	})
