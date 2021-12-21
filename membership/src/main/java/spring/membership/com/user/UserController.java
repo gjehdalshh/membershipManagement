@@ -2,6 +2,7 @@ package spring.membership.com.user;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import spring.membership.com.user.NaverLoginBO;
+import spring.membership.com.domain.UserDomain;
 import spring.membership.com.dto.UserDTO;
 
 @Controller
@@ -31,7 +33,6 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-	
 	/* ---------------- 로그인 --------------------- */
 	@GetMapping("/user/login")
 	public void login(Model model, HttpSession session) {
@@ -52,7 +53,8 @@ public class UserController {
 
 	/* ----------------- 회원가입 ---------------- */
 	@GetMapping("/user/join")
-	public void join() {}
+	public void join() {
+	}
 
 	@ResponseBody
 	@PostMapping("/user/joinProc")
@@ -64,13 +66,49 @@ public class UserController {
 
 		return val;
 	}
-	
-	
+
 	/* ------------- 아이디, 비밀번호 찾기 -------------- */
 	@GetMapping("/user/findInfo")
-	public void findInfo() {}
+	public void findInfo() {
+	}
 
-	
+	@ResponseBody
+	@PostMapping("/user/findIdProc")
+	public Map<String, Object> findIdProc(@RequestBody UserDTO dto) {
+
+		Map<String, Object> val = new HashMap<String, Object>();
+
+		UserDomain vo = service.findInfoProc(dto, 1);
+
+		val.put("id", vo.getId());
+
+		return val;
+	}
+
+	@ResponseBody
+	@PostMapping("/user/findPwProc")
+	public Map<String, Object> findPwProc(@RequestBody UserDTO dto) {
+
+		Map<String, Object> val = new HashMap<String, Object>();
+
+		UserDomain vo = service.findInfoProc(dto, 2);
+
+		val.put("id", vo.getId());
+
+		return val;
+	}
+
+	@ResponseBody
+	@PostMapping("/user/changePwProc")
+	public Map<String, Object> changePwProc(@RequestBody UserDTO dto) {
+
+		Map<String, Object> val = new HashMap<String, Object>();
+
+		val.put("result", service.changePwProc(dto));
+
+		return val;
+	}
+
 	/* ------------------ 회원 정보 변경 ------------------- */
 	@ResponseBody
 	@PostMapping("/user/changeNm")
@@ -82,7 +120,7 @@ public class UserController {
 
 		return val;
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/user/changePw")
 	public Map<String, Object> changePw(@RequestBody UserDTO dto) {
@@ -93,7 +131,7 @@ public class UserController {
 
 		return val;
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/user/changeNick")
 	public Map<String, Object> changeNick(@RequestBody UserDTO dto) {

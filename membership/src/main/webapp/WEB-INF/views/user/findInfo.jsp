@@ -20,19 +20,24 @@
 			<div>
 				<div class="textName">이름</div>
 				<div>
-					<input class="user_name" type="password" name="user_name">
+					<input class="user_name" type="text" name="user_name">
 				</div>
 			</div>
 			<div>
 				<div class="textPh">휴대전화</div>
 				<div>
-					<input class="user_ph" type="password" name="user_ph">
+					<input class="user_ph" type="text" name="user_ph">
 				</div>
 			</div>
 		</div>
 		<div>
 			<div>
-				<input class="findIdBtn" type="submit" value="아이디찾기">
+				<input onclick="findId()" class="findIdBtn" type="submit" value="아이디찾기">
+			</div>
+		</div>
+		<div>
+			<div>
+				<input onclick="loginBtn()" class="loginBtn" type="button" value="로그인">
 			</div>
 		</div>
 	</c:if>
@@ -41,22 +46,48 @@
 			<div>
 				<div class="textId">아이디</div>
 				<div>
-					<input class="user_id" type="password" name="user_id">
+					<input class="user_id" type="text" name="user_id">
 				</div>
 			</div>
 			<div>
 				<div class="textPh">휴대전화</div>
 				<div>
-					<input class="user_ph" type="password" name="user_ph">
+					<input class="user_ph" type="text" name="user_ph">
 				</div>
 			</div>
 		</div>
 		<div>
 			<div>
-				<input class="findIdBtn" type="submit" value="비밀번호찾기">
+				<input onclick="findPw()" class="findPwBtn" type="submit"
+					value="비밀번호찾기">
+			</div>
+		</div>
+		<div>
+			<div>
+				<input onclick="loginBtn()" class="loginBtn" type="button" value="로그인">
 			</div>
 		</div>
 	</c:if>
+	<div class="pwChange">
+		<div>
+			<div class="newPw">새 비밀번호</div>
+			<div>
+				<input class="new_pw" type="password" name="new_pw">
+			</div>
+		</div>
+		<div>
+			<div class="newChkPw">새 비밀번호 확인</div>
+			<div>
+				<input class="new_chkPw" type="password" name="new_chkPw">
+			</div>
+		</div>
+		<div>
+			<div>
+				<input onclick="changePw()" class="changePw" type="submit"
+					value="비밀번호변경">
+			</div>
+		</div>
+	</div>
 </div>
 
-<script defer src="/res/js/user/findInfo.js?ver=2"></script>
+<script defer src="/res/js/user/findInfo.js?ver=32"></script>

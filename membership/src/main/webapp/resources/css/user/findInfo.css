@@ -23,29 +23,34 @@ body {
     margin-bottom: 40px;
 }
 
-.textName, .textPh, .textId {
+.textName, .textPh, .textId, .newPw, .newChkPw {
 	font-size: 20px;
     font-weight: 100;
     text-align: initial;
     width: 500px;
-    margin: 5 auto 15;
+    margin: 5 auto ;
 }
 
-.user_name, .user_ph, .user_id {
+.user_name, .user_ph, .user_id, .new_pw, .new_chkPw {
 	width: 500px;
     height: 45px;
     border-radius: 10px;
     border: 0.1px solid darkgray;
     padding: 10 10 5;
     font-size: 25px;
+    margin-bottom: 15px;
 }
 
-.findIdBtn {
+.findIdBtn, .findPwBtn, .loginBtn, .changePw {
 	width: 500px;
     height: 45px;
     border-radius: 10px;
     border: 0.1px solid darkgray;
     font-size: 25px;
-    margin: 30 0 200;
     background-color: aliceblue;
+    cursor: pointer;
+}
+
+.loginBtn, .changePw {
+	margin: 15 0 200;
 }

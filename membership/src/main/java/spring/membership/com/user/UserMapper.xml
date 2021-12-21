@@ -19,33 +19,58 @@
 		= #{id} or
 		nick = #{nick};
 	</select>
-	
+
 	<select id="selUserId" resultType="UserDomain">
 		SELECT * FROM usertable
-		WHERE i_user = #{i_user}
+		WHERE
+		i_user = #{i_user}
 	</select>
+
+	<!-- 유저 아이디 찾기 -->
+	<select id="findIdProc" resultType="UserDomain">
+		SELECT * FROM usertable
+		WHERE
+		user_name = #{user_name} AND ph = #{ph}
+	</select>
+
+	<!-- 유저 비밀번호 찾기 -->
+	<select id="findPwProc" resultType="UserDomain">
+		SELECT * FROM usertable
+		WHERE id = #{id} AND ph = #{ph}
+	</select>
+	
+	<!-- 유저 비밀번호 찾기(변경) -->
+	<update id="changePwProc">
+		UPDATE usertable SET
+		pw = #{pw}
+		where id =
+		#{id}
+	</update>
 
 	<!-- 이름 변경 -->
 	<update id="changeNm">
 		UPDATE usertable SET
 		user_name = #{user_name}
-		where i_user = #{i_user}
+		where
+		i_user = #{i_user}
 	</update>
-	
+
 	<!-- 비밀번호 변경 -->
 	<update id="changePw">
 		UPDATE usertable SET
 		pw = #{pw}
-		where i_user = #{i_user}
+		where i_user =
+		#{i_user}
 	</update>
-	
+
 	<!-- 별명 변경 -->
 	<update id="changeNick">
 		UPDATE usertable SET
 		nick = #{nick}
-		where i_user = #{i_user}
+		where i_user =
+		#{i_user}
 	</update>
-	
+
 </mapper>
 
 
