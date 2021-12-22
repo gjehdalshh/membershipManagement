@@ -22,16 +22,22 @@ public class MainService {
 	}
 	
 	// 친구 추가
-	public int insFriend(RelationDTO dto) {
-		RelationDomain vo = mapper.selRelation(dto);
+	public int insFriend(UserDTO dto) {
+		System.out.println("aaa");
+		UserDomain vo = mapper.selUser(dto);
 		
-		if(vo != null) {
+		if(vo == null) {
 			return 2;
 		}
-	
-		mapper.insFriendFrom(dto);
-		mapper.insFriendTo(dto);
-	
+		System.out.println("bbb");
+		RelationDTO relVo = new RelationDTO();
+		relVo.setI_userFrom(dto.getI_user());
+		relVo.setI_userTo(vo.getI_user());
+		
+		mapper.insFriendFrom(relVo);
+		mapper.insFriendTo(relVo);
+		
+		System.out.println("ccc");
 		return 1;
 	}
 	

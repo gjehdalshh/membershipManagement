@@ -1,14 +1,64 @@
-var change_img = document.querySelector('.change_img')
-var main_div = document.querySelector('#main_div')
-var search_div = document.querySelector('#search_div')
+var friendSearchDiv = document.querySelector('.friendSearchDiv')
+var phInsert = document.querySelector('.phInsert')
+var idInsert = document.querySelector('.idInsert')
+var insertState1 = document.querySelector('.insertState1')
+var insertState2 = document.querySelector('.insertState2')
+var setionIuser = document.querySelector('.setionIuser')
 
-function insFriend(i_userFrom, i_userTo) {
-	
-	var param = {
-		i_userFrom: i_userFrom,
-		i_userTo: i_userTo
+friendSearchDiv.style.display = 'none'
+friendInsert(1)
+
+function friendSearchOpen() {
+	friendSearchDiv.style.display = 'flex'
+}
+function friendSearchClose() {
+	friendSearchDiv.style.display = 'none'
+}
+
+
+// 모달창 띄우기 디테일페이지
+var mw_temp = document.querySelector('#mw_temp')
+
+function window_open() {
+	friendInsert(1)
+	mw_temp.style.display = 'block'
+}
+function window_close() {
+	friendInsert(1)
+	mw_temp.style.display = 'none'
+}
+
+function friendInsert(check) {
+	if (check == 1) {
+		phInsert.style.color = 'black'
+		idInsert.style.color = 'gray'
+		phInsert.style.borderBottom = '0.1px solid black'
+		idInsert.style.borderBottom = '0.1px solid darkgray'
+		insertState1.style.display = 'block'
+		insertState2.style.display = 'none'
+
+	} else {
+		phInsert.style.color = 'gray'
+		idInsert.style.color = 'black'
+		idInsert.style.borderBottom = '0.1px solid black'
+		phInsert.style.borderBottom = '0.1px solid darkgray'
+		insertState2.style.display = 'block'
+		insertState1.style.display = 'none'
 	}
+}
+
+function friendInsertBtn() {
+	var friendName = document.querySelector('.friendName')
+	var friendPh = document.querySelector('.friendPh')
+	
+	param = {
+		user_name: friendName.value,
+		ph: friendPh.value,
+		i_user: setionIuser.value
+	}
+	
 	console.log(param)
+	
 	fetch(`/chat/insFriend`, {
 		method: 'POST',
 		headers: {
@@ -20,65 +70,23 @@ function insFriend(i_userFrom, i_userTo) {
 	}).then(function(data) {
 		switch(data.result) {
 			case 1:
-				alert('친구 추가 하였습니다.')
+				alert('친구 추가 되었습니다.')
+				window_close()
 				break;
 			case 2:
-				alert('이미 등록된 친구입니다.')
+				alert('해당 유저는 존재하지 않습니다.')
 				break;
 		}
 	})
 }
 
-function delFriend(i_userFrom, i_userTo) {
-	
-	var param = {
-		i_userFrom: i_userFrom,
-		i_userTo: i_userTo
-	}
-	console.log(param)
-	fetch(`/chat/delFriend`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body:JSON.stringify(param)
-	}).then(function(res) {
-		return res.json()
-	}).then(function(data) {
-		switch(data.result) {
-			case 1:
-				alert('친구 삭제 하였습니다.')
-				break;
-		}
-	})
-}
 
-change_img.onclick = function() {
-	location.href = '/chat/changeInfo'
-}
-
-function movePage(page) {
-	location.href="/chat/home?page="+page
-}
-
-delFriend.onclick = function() {
-	
-}
+/* --------------- main js ------------------- */
 
 
-var page = location.search
-var result = page.substring(6,7)
 
-if(result == 1) {
-	main_div.style.display = 'block'
-	search_div.style.display = 'none'
-}
 
-if(result == 3) {
-	main_div.style.display = 'none'
-	search_div.style.display = 'block'
-}
 
-function moveChannel() {
-	location.href='/chat/channelList'
-}
+
+
+

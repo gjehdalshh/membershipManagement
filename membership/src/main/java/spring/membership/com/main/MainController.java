@@ -35,6 +35,7 @@ public class MainController {
 	// 메인 화면 
 	@GetMapping("/chat/home")
 	public void home(Model model, UserDTO dto, RelationDTO relDto) {
+		
 		// 친구 검색
 		model.addAttribute("userList", service.searchUserList(dto));
 		
@@ -45,7 +46,7 @@ public class MainController {
 	// 친구 추가
 	@ResponseBody
 	@PostMapping("/chat/insFriend")
-	public Map<String, Object> insFriend(@RequestBody RelationDTO dto) {
+	public Map<String, Object> insFriend(@RequestBody UserDTO dto) {
 		
 		Map<String, Object> val = new HashMap<String, Object>();
 		

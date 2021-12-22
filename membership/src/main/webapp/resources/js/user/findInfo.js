@@ -2,6 +2,11 @@ var findIdBtn = document.querySelector('.findIdBtn')
 var pwChange = document.querySelector('.pwChange')
 var findPwBtn = document.querySelector('.findPwBtn')
 var loginBtn = document.querySelector('.loginBtn')
+var main_logo = document.querySelector('.main_logo')
+
+main_logo.onclick = function() {
+	location.href = '/user/login'
+}
 
 pwChange.style.display = 'none';
 

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="spring.membership.com.main.MainMapper">
+
+	<select id="selUser" resultType="UserDomain">
+		SELECT * FROM usertable
+		WHERE user_name = #{user_name} AND ph = #{ph}
+	</select>
+
+	<insert id="insFriendFrom">
+		INSERT INTO relationtable
+		(i_userFrom, i_userTo)
+		VALUES
+		(#{i_userFrom} , #{i_userTo})
+	</insert>
+
+	<insert id="insFriendTo">
+		INSERT INTO relationtable
+		(i_userFrom, i_userTo)
+		VALUES
+		(#{i_userTo} , #{i_userFrom})
+	</insert>
+
+
+
+
+
 	<select id="searchUserList" resultType="UserDomain">
 		SELECT * FROM usertable
 		WHERE user_name LIKE CONCAT('%', #{user_name}, '%');
@@ -12,34 +36,24 @@
 	</select>
 
 	<select id="selFriendList" resultType="RelationDomain">
-		SELECT a.i_userFrom, a.i_userTo,
+		SELECT a.i_userFrom,
+		a.i_userTo,
 		b.user_name, b.quotes, b.i_user from relationtable a
-		LEFT JOIN usertable b
+		LEFT
+		JOIN usertable b
 		ON a.i_userTo = b.i_user;
 	</select>
 
-	<insert id="insFriendFrom">
-		INSERT INTO relationtable
-		(i_userFrom, i_userTo)
-		VALUES
-		(#{i_userFrom} , #{i_userTo});
-	</insert>
-
-	<insert id="insFriendTo">
-		INSERT INTO relationtable
-		(i_userFrom, i_userTo)
-		VALUES
-		(#{i_userTo} , #{i_userFrom});
-	</insert>
-
 	<delete id="delFriendFrom">
 		DELETE FROM relationtable
-		WHERE i_userFrom = #{i_userFrom} and i_userTo = #{i_userTo}
+		WHERE i_userFrom =
+		#{i_userFrom} and i_userTo = #{i_userTo}
 	</delete>
 
 	<delete id="delFriendTo">
 		DELETE FROM relationtable
-		WHERE i_userFrom = #{i_userTo} and i_userTo = #{i_userFrom}
+		WHERE i_userFrom =
+		#{i_userTo} and i_userTo = #{i_userFrom}
 	</delete>
 
 </mapper>

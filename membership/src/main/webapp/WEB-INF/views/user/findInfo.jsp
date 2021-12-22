@@ -90,4 +90,4 @@
 	</div>
 </div>
 
-<script defer src="/res/js/user/findInfo.js?ver=32"></script>
+<script defer src="/res/js/user/findInfo.js?ver=33"></script>
