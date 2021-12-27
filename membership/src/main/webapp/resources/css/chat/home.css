@@ -110,6 +110,7 @@ body {
 	align-items: center;
 }
 
+
 #main_div {
 	width: 400px;
 	margin: auto;
@@ -133,7 +134,13 @@ body {
 	margin-bottom: 25px;
 }
 
-.emoji_img, .alarm_img, .change_img {
+.emoji_img {
+	width: 40px;
+	height: 40px;
+	margin-bottom: 25px;
+}
+
+.alarm_img, .change_img {
 	width: 30px;
 	height: 30px;
 	margin-bottom: 25px;
@@ -242,9 +249,16 @@ body {
 	color: gray;
 }
 
+.seeAllFriend {
+	background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
 .friendProfileImg {
 	width: 40px;
 	height: 40px;
 	border-radius: 20px;
 	margin-right: 5px;
 }
+

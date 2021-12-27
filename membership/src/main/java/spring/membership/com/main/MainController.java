@@ -36,21 +36,42 @@ public class MainController {
 	@GetMapping("/chat/home")
 	public void home(Model model, UserDTO dto, RelationDTO relDto) {
 		
-		// 친구 검색
-		model.addAttribute("userList", service.searchUserList(dto));
-		
 		// 친구 리스트 뿌리기
 		model.addAttribute("friendList", service.selFriendList(relDto));
+		// 친구 수
+		model.addAttribute("selFriendCount", service.selFriendCount(relDto));
 	}
 	
-	// 친구 추가
+	@PostMapping("/chat/home")
+	public void home(Model model, RelationDTO dto) {
+		if(dto.getUser_name().equals("")) { // 해당하는 친구가 없다면
+			return;
+		}
+		// 친구 검색
+		model.addAttribute("searchList", service.searchUserList(dto));
+		// 친구 수
+		model.addAttribute("searchListCount", service.searchUserCount(dto));
+	}
+	
+	// 이름으로 친구 추가
 	@ResponseBody
-	@PostMapping("/chat/insFriend")
+	@PostMapping("/chat/insNameFriend")
 	public Map<String, Object> insFriend(@RequestBody UserDTO dto) {
+		Map<String, Object> val = new HashMap<String, Object>();
+		
+		val.put("result", service.insNameFriend(dto));
+		
+		return val;
+	}
+	
+	// 아이디로 친구 추가
+	@ResponseBody
+	@PostMapping("/chat/insIdFriend")
+	public Map<String, Object> instIdFriend(@RequestBody UserDTO dto) {
 		
 		Map<String, Object> val = new HashMap<String, Object>();
 		
-		val.put("result", service.insFriend(dto));
+		val.put("result", service.insIdFriend(dto));
 		
 		return val;
 	}

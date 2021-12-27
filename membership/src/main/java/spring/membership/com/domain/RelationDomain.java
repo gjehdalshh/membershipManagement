@@ -4,10 +4,23 @@ import spring.membership.com.model.RelationEntity;
 
 public class RelationDomain extends RelationEntity{
 	private String user_name;
-	private String quotes;
+	private String stateMes;
 	private int i_user;
+	private int friendCount;
 	
 	
+	public int getFriendCount() {
+		return friendCount;
+	}
+	public void setFriendCount(int friendCount) {
+		this.friendCount = friendCount;
+	}
+	public String getStateMes() {
+		return stateMes;
+	}
+	public void setStateMes(String stateMes) {
+		this.stateMes = stateMes;
+	}
 	public int getI_user() {
 		return i_user;
 	}
@@ -20,10 +33,5 @@ public class RelationDomain extends RelationEntity{
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public String getQuotes() {
-		return quotes;
-	}
-	public void setQuotes(String quotes) {
-		this.quotes = quotes;
-	}
+	
 }

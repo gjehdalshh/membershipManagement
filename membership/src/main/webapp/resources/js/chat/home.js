@@ -15,7 +15,6 @@ function friendSearchClose() {
 	friendSearchDiv.style.display = 'none'
 }
 
-
 // 모달창 띄우기 디테일페이지
 var mw_temp = document.querySelector('#mw_temp')
 
@@ -47,7 +46,7 @@ function friendInsert(check) {
 	}
 }
 
-function friendInsertBtn() {
+function friendNameInsertBtn() {
 	var friendName = document.querySelector('.friendName')
 	var friendPh = document.querySelector('.friendPh')
 	
@@ -59,7 +58,7 @@ function friendInsertBtn() {
 	
 	console.log(param)
 	
-	fetch(`/chat/insFriend`, {
+	fetch(`/chat/insNameFriend`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -76,9 +75,47 @@ function friendInsertBtn() {
 			case 2:
 				alert('해당 유저는 존재하지 않습니다.')
 				break;
+			case 3:
+				alert('이미 친구 상태입니다.')
 		}
 	})
 }
+
+
+function friendIdInsertBtn() {
+	var friendId = document.querySelector('.friendId')
+	
+	var param = {
+		id: friendId.value,
+		i_user: setionIuser.value
+	}
+	
+	console.log(param)
+	
+	fetch(`/chat/insIdFriend`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body:JSON.stringify(param)
+	}).then(function(res) {
+		return res.json()
+	}).then(function(data) {
+		switch(data.result) {
+			case 1:
+				alert('친구 추가 되었습니다.')
+				window_close()
+				break;
+			case 2:
+				alert('해당 유저는 존재하지 않습니다.')
+				break;
+			case 3:
+				alert('이미 친구 상태입니다.')
+				break;
+		}
+	})
+}
+
 
 
 /* --------------- main js ------------------- */

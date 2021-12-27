@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/res/css/chat/home.css?ver=12">
+<link rel="stylesheet" href="/res/css/chat/home.css?ver=14">
 
 <input class="setionIuser" type="hidden" value="${id.i_user}">
 
@@ -22,15 +22,18 @@
 			<div class="insertState1">
 				<div>
 					<div>
-						<input class="friendName" type="text" name="friendName" placeholder="친구이름">
+						<input class="friendName" type="text" name="friendName"
+							placeholder="친구이름">
 					</div>
 					<div>
-						<input class="friendPh" type="text" name="friendPh" placeholder="전화번호">
+						<input class="friendPh" type="text" name="friendPh"
+							placeholder="전화번호">
 					</div>
 					<div class="notice">친구의 이름과 전화번호를 입력해주세요.</div>
 				</div>
 				<div>
-					<input onclick="friendInsertBtn()" class="friendNameInsertBtn" type="button" value="친구 추가">
+					<input onclick="friendNameInsertBtn()" class="friendNameInsertBtn"
+						type="button" value="친구 추가">
 				</div>
 			</div>
 			<div class="insertState2">
@@ -39,12 +42,15 @@
 				</div>
 				<div class="notice">아이디 검색응 허용한 친구만 찾을 수 있습니다.</div>
 				<div>
-					<input onclick="" class="friendIdInsertBtn" type="button" value="친구 추가">
+					<input onclick="friendIdInsertBtn()" class="friendIdInsertBtn"
+						type="button" value="친구 추가">
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+
 
 <div id="main_div">
 	<div class="title_div">
@@ -55,7 +61,7 @@
 	<div class="flex">
 		<div class="left_div">
 			<div>
-				<img class="person_img" alt="" src="/res/img/person.jpg">
+				<img class="person_img" alt="" src="/res/img/person.png">
 			</div>
 			<div>
 				<img class="talk_img" alt="" src="/res/img/talk.png">
@@ -67,7 +73,7 @@
 				<img class="emoji_img" alt="" src="/res/img/emoji.png">
 			</div>
 			<div>
-				<img class="alarm_img" alt="" src="/res/img/alarm.jpg">
+				<img class="alarm_img" alt="" src="/res/img/alarm.png">
 			</div>
 			<div>
 				<img class="change_img" alt="" src="/res/img/change.png">
@@ -90,12 +96,16 @@
 
 			<div class="friendSearchDiv">
 				<div class="border_div">
-					<input class="friendSearchInput" type="text" name=""> <span
-						class="middleLine">|</span> <input class="friendSearchBtn"
-						type="button" value="친구검색">
+					<form action="/chat/home" method="post">
+						<input class="friendSearchInput" type="text" name="user_name">
+						<span class="middleLine">|</span> <input
+							onclick="friendSearchBtn()" class="friendSearchBtn" type="submit"
+							value="친구검색">
+					</form>
 				</div>
 				<div>
-					<img onclick="friendSearchClose()" class="close_img" alt="" src="/res/img/x.png">
+					<img onclick="friendSearchClose()" class="close_img" alt=""
+						src="/res/img/x.png">
 				</div>
 			</div>
 
@@ -105,36 +115,54 @@
 						<img class="myProfileImg" alt="" src="/res/img/person.jpg">
 					</div>
 					<div>
-						<div class="name">허동민</div>
-						<div class="stateMessage">안녕하세요 허동민입니다</div>
+						<div class="name">${id.user_name}</div>
+						<div class="stateMessage">${id.stateMes}</div>
 					</div>
 				</div>
-				<div class="friendCount">친구 674</div>
-				<div class="friendDiv">
+				<div class="flex_between">
+					<div class="friendCount">친구 ${selFriendCount.friendCount}${searchListCount.friendCount}</div>
 					<div>
-						<img class="friendProfileImg" alt="" src="/res/img/person.jpg">
-					</div>
-					<div>
-						<div class="name">허동민</div>
-						<div class="stateMessage">안녕하세요 허동민입니다</div>
+						<form action="/chat/home" method="get">
+							<input class="seeAllFriend" type="submit" value="전체보기">
+						</form>
 					</div>
 				</div>
-				<div class="friendDiv">
-					<div>
-						<img class="friendProfileImg" alt="" src="/res/img/person.jpg">
-					</div>
-					<div>
-						<div class="name">허동민</div>
-						<div class="stateMessage">안녕하세요 허동민입니다</div>
-					</div>
-				</div>
+				<c:choose>
+					<c:when test="${empty searchList}">
+						<c:forEach var="friendList" items="${friendList}">
+							<div class="friendDiv">
+								<div>
+									<img class="friendProfileImg" alt="" src="/res/img/person.jpg">
+								</div>
+								<div>
+									<div class="name">${friendList.user_name}</div>
+									<div class="stateMessage">${friendList.stateMes}</div>
+								</div>
+							</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="searchList" items="${searchList}">
+							<c:if test="${searchList.i_user != id.i_user}">
+								<div class="friendDiv">
+									<div>
+										<img class="friendProfileImg" alt="" src="/res/img/person.jpg">
+									</div>
+									<div>
+										<div class="name">${searchList.user_name}</div>
+										<div class="stateMessage">${searchList.stateMes}</div>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
 </div>
 
-
-<script defer src="/res/js/chat/home.js?ver=39"></script>
+<script defer src="/res/js/chat/home.js?ver=40"></script>
 
 
 

@@ -2,9 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="spring.membership.com.main.MainMapper">
 
-	<select id="selUser" resultType="UserDomain">
+	<select id="selNameUser" resultType="UserDomain">
 		SELECT * FROM usertable
 		WHERE user_name = #{user_name} AND ph = #{ph}
+	</select>
+
+	<select id="selIdUser" resultType="UserDomain">
+		SELECT * FROM usertable
+		WHERE
+		id = #{id}
+	</select>
+
+	<select id="selRelationUser" resultType="RelationDTO">
+		SELECT * FROM
+		relationtable
+		WHERE i_userFrom = #{i_userFrom} AND i_userTo =
+		#{i_userTo};
 	</select>
 
 	<insert id="insFriendFrom">
@@ -21,28 +34,43 @@
 		(#{i_userTo} , #{i_userFrom})
 	</insert>
 
-
-
-
-
-	<select id="searchUserList" resultType="UserDomain">
-		SELECT * FROM usertable
-		WHERE user_name LIKE CONCAT('%', #{user_name}, '%');
-	</select>
-
-	<select id="selRelation" resultType="RelationDomain">
-		SELECT * from relationtable
-		WHERE i_userFrom = #{i_userFrom} and i_userTo = #{i_userTo};
-	</select>
-
 	<select id="selFriendList" resultType="RelationDomain">
 		SELECT a.i_userFrom,
-		a.i_userTo,
-		b.user_name, b.quotes, b.i_user from relationtable a
-		LEFT
-		JOIN usertable b
-		ON a.i_userTo = b.i_user;
+		b.i_user, b.nick, b.user_name, b.ph, b.stateMes from relationtable a
+		LEFT JOIN usertable b
+		ON a.i_userTo = b.i_user
+		WHERE a.i_userFrom =
+		#{i_userFrom};
 	</select>
+
+	<select id="searchUserList" resultType="RelationDomain">
+		SELECT a.i_userFrom,
+		b.i_user, b.nick, b.user_name, b.ph, b.stateMes from relationtable a
+		LEFT JOIN
+		usertable b
+		ON a.i_userTo = b.i_user
+		WHERE a.i_userFrom = #{i_userFrom}
+		AND user_name LIKE CONCAT('%', #{user_name}, '%');
+	</select>
+
+	<select id="searchUserCount" resultType="RelationDomain">
+		SELECT count(i_userTo)
+		as friendCount from relationtable a
+		LEFT JOIN usertable b
+		ON a.i_userTo = b.i_user
+		WHERE a.i_userFrom = #{i_userFrom}
+		AND user_name LIKE
+		CONCAT('%', #{user_name}, '%');
+	</select>
+
+	<select id="selFriendCount" resultType="RelationDomain">
+		SELECT COUNT(i_userTo) as
+		friendCount
+		FROM relationtable
+		WHERE i_userFrom = #{i_userFrom};
+	</select>
+
+
 
 	<delete id="delFriendFrom">
 		DELETE FROM relationtable
