@@ -103,8 +103,14 @@ public class MainController {
 	}
 	*/
 	
-	@GetMapping("/chat/channelList")
-	public void channelList() {}
+	
+	
+	
+	@GetMapping("/chat/chatList")
+	public void chatList() {
+		
+		
+	}
 	
 	@GetMapping("/chat/chatRoom")
 	public void chatRoom() {

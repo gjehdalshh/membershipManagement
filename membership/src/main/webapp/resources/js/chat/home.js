@@ -4,8 +4,8 @@ var idInsert = document.querySelector('.idInsert')
 var insertState1 = document.querySelector('.insertState1')
 var insertState2 = document.querySelector('.insertState2')
 var setionIuser = document.querySelector('.setionIuser')
+var param = document.querySelector('.param')
 
-friendSearchDiv.style.display = 'none'
 friendInsert(1)
 
 function friendSearchOpen() {
@@ -17,14 +17,21 @@ function friendSearchClose() {
 
 // 모달창 띄우기 디테일페이지
 var mw_temp = document.querySelector('#mw_temp')
+var mw_temp_change = document.querySelector('#mw_temp_change')
 
-function window_open() {
-	friendInsert(1)
-	mw_temp.style.display = 'block'
+function window_open(page) {
+	if(page == 1) {
+		friendInsert(1)
+		mw_temp.style.display = 'block'	
+	}
+	if(page == 2) {
+		mw_temp_change.style.display = 'block'	
+	}
 }
 function window_close() {
 	friendInsert(1)
 	mw_temp.style.display = 'none'
+	mw_temp_change.style.display = 'none'
 }
 
 function friendInsert(check) {
@@ -117,11 +124,32 @@ function friendIdInsertBtn() {
 }
 
 
+var right_div_chatList = document.querySelector('.right_div_chatList')
+var right_div_home = document.querySelector('.right_div_home')
+var chatSearchDiv = document.querySelector('.chatSearchDiv')
 
-/* --------------- main js ------------------- */
 
+if(param.value == 1) {
+	friendSearchDiv.style.display = 'none'
+} else if(param.value == 2) {
+	chatSearchDiv.style.display = 'none'
+}
 
+function chatSearchOpen() {
+	chatSearchDiv.style.display = 'flex'
+}
 
+function chatSearchClose() {
+	chatSearchDiv.style.display ='none'
+}
+
+function chatHomeMove() {
+	location.href=`/chat/home?page=`+1
+}
+
+function chatListMove() {
+	location.href=`/chat/home?page=`+2
+}
 
 
 

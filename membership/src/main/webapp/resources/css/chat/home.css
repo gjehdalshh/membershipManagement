@@ -6,6 +6,10 @@ html, body {
 	margin: 0;
 }
 
+.flex {
+	display: flex;
+}
+
 .mw {
 	position: fixed;
 	_position: absolute;
@@ -16,7 +20,7 @@ html, body {
 	display: none;
 }
 
-.mw .bg {
+.mw .bg, .mw_change {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -26,15 +30,25 @@ html, body {
 	opacity: .5;
 }
 
-.mw .fg {
+.mw .fg, .mw_change {
 	position: absolute;
-    width: 300;
-    height: 450px;
+	width: 300;
+	height: 450px;
+	background-color: white;
+	z-index: 100;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -40%);
+}
+
+.fg_change {
+	position: absolute;
+    width: 130;
     background-color: white;
     z-index: 100;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -40%);
+    top: 74%;
+    left: 41%;
+    border: 0.1px solid gray;
 }
 
 .window_close {
@@ -52,13 +66,13 @@ html, body {
 
 .flex_border {
 	border-bottom: 1px solid darkgray;
-    display: flex;
-    margin-bottom: 30px;
+	display: flex;
+	margin-bottom: 30px;
 }
 
 .friendInsertTitle {
 	font-size: 18px;
-    margin-bottom: 25px;
+	margin-bottom: 25px;
 }
 
 .phInsert, .idInsert {
@@ -70,11 +84,11 @@ html, body {
 
 .friendName, .friendPh, .friendId {
 	width: 260px;
-    height: 30px;
-    border: none;
-    border-bottom: 0.1px solid gray;
-    margin-bottom: 10px;
-    outline: 0px;
+	height: 30px;
+	border: none;
+	border-bottom: 0.1px solid gray;
+	margin-bottom: 10px;
+	outline: 0px;
 }
 
 .notice {
@@ -83,18 +97,16 @@ html, body {
 
 .friendNameInsertBtn, .friendIdInsertBtn {
 	position: absolute;
-    bottom: 20px;
-    right: 40px;
-    width: 100px;
-    height: 35px;
-    border: none;
-    background-color: #f3e42b;
-    cursor: pointer;
+	bottom: 20px;
+	right: 40px;
+	width: 100px;
+	height: 35px;
+	border: none;
+	background-color: #f3e42b;
+	cursor: pointer;
 }
 
-
 /* ----------- 메인 css -------------------- */
-
 body {
 	margin: 0;
 	padding: 0;
@@ -109,7 +121,6 @@ body {
 	justify-content: space-between;
 	align-items: center;
 }
-
 
 #main_div {
 	width: 400px;
@@ -132,28 +143,32 @@ body {
 	width: 40px;
 	height: 40px;
 	margin-bottom: 25px;
+	cursor: pointer;
 }
 
 .emoji_img {
 	width: 40px;
 	height: 40px;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
+	cursor: pointer;
 }
 
 .alarm_img, .change_img {
 	width: 30px;
 	height: 30px;
 	margin-bottom: 25px;
+	cursor: pointer;
 }
 
 .jum_img {
 	width: 30px;
 	height: 30px;
 	margin-bottom: 200px;
+	cursor: pointer;
 }
 
 /* ------------- right -------------------- */
-.right_div {
+.right_div_home, .right_div_chatList {
 	width: 335px;
 	padding: 30 15 0;
 }
@@ -165,12 +180,14 @@ body {
 .friendSearch_img {
 	width: 30px;
 	height: 30px;
+	cursor: pointer;
 }
 
 .firendInsert_img {
 	width: 30px;
 	height: 27px;
 	margin-left: 15px;
+	cursor: pointer;
 }
 
 .friendSearchDiv {
@@ -251,8 +268,8 @@ body {
 
 .seeAllFriend {
 	background-color: white;
-    border: none;
-    cursor: pointer;
+	border: none;
+	cursor: pointer;
 }
 
 .friendProfileImg {
@@ -261,4 +278,104 @@ body {
 	border-radius: 20px;
 	margin-right: 5px;
 }
+
+/* --------- 오른쪽 두번쨰 페이지 ------------ */
+.flex_chatList {
+	align-items: center;
+	display: flex;
+	margin-top: 20px;
+	padding-bottom: 10px;
+}
+
+.flex_chatList:hover {
+	background-color: #e9e5e5
+}
+
+.chatRoomSearch_img {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.openChat_img {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	margin-left: 15px;
+}
+
+.chatInsert_img {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	margin-left: 15px;
+}
+
+.chatRoomImg {
+	width: 50px;
+	height: 50px;
+	border-radius: 20px;
+	margin-right: 5px;
+}
+
+.flexChatList {
+	display: flex;
+    width: 255px;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.chatRoomName {
+	font-size: 15px;
+	font-weight: bold;
+	width: 140px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.chatRoomPersonCount {
+	font-size: 14px;
+}
+
+.r_dt {
+	font-size: 11px;
+}
+
+.currentMessage {
+	font-size: 12px;
+	text-align: initial;
+}
+
+.chatSearchDiv {
+	display: flex;
+	align-items: center;
+	margin-top: 15px;
+}
+
+.chatSearchInput {
+	width: 155px;
+    height: 30px;
+    font-size: 17px;
+    border: none;
+    outline: 0px;
+}
+
+.chatSearchBtn {
+	background-color: white;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.myStateChange {
+	font-size: 17px;
+    font-weight: 100;
+    margin-bottom: 7px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
 
