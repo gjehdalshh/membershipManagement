@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/res/css/user/login.css?ver=2">
+<link rel="stylesheet" href="/res/css/user/login.css?ver=3">
 
 <div id="main_div">
 	<div class="title_div">
@@ -32,7 +32,8 @@
 			<div class="move_join">회원가입</div>
 		</div>
 	</div>
+	<div onclick="apiMove()" class="api">api문서</div>
 </div>
 
 
-<script defer src="/res/js/user/login.js?ver=2"></script>
+<script defer src="/res/js/user/login.js?ver=3"></script>

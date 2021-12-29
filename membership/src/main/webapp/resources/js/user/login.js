@@ -46,5 +46,7 @@ login_btn.onclick = function() {
 	})
 }
 
-
+function apiMove() {
+	location.href=`/api/index`
+}
 

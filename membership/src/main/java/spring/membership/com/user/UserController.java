@@ -50,6 +50,15 @@ public class UserController {
 
 		return val;
 	}
+	
+	/* ------------ 로그아웃 ------------------- */
+	@GetMapping("/user/logout")
+	public String logout(HttpSession hs) {
+		hs.invalidate();
+		
+		return "/user/login";
+	}
+	
 
 	/* ----------------- 회원가입 ---------------- */
 	@GetMapping("/user/join")

@@ -6,7 +6,12 @@ var insertState2 = document.querySelector('.insertState2')
 var setionIuser = document.querySelector('.setionIuser')
 var param = document.querySelector('.param')
 
+
 friendInsert(1)
+
+function logout() {
+	location.href=`/user/logout`
+}
 
 function friendSearchOpen() {
 	friendSearchDiv.style.display = 'flex'

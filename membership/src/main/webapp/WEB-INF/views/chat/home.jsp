@@ -3,6 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/res/css/chat/home.css?ver=15">
 
+<c:if test="${id == null}">
+	<script>
+		alert('로그인 후 이용해주세요')
+		location.href="/user/login"
+	</script>
+</c:if>
+
 <input class="setionIuser" type="hidden" value="${id.i_user}">
 <input class="param" type="hidden" value="${param.page}">
 
@@ -69,7 +76,7 @@
 		</div>
 		<div class="myStateChange">설정</div>
 		<div class="myStateChange">잠금모드</div>
-		<div class="myStateChange">로그아웃</div>
+		<div onclick="logout()" class="myStateChange">로그아웃</div>
 	</div>
 </div>
 
