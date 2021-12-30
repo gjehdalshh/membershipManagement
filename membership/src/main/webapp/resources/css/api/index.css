@@ -16,6 +16,23 @@ a {
 
 .colorWhite {
 	color: white;
+	cursor: pointer;
+}
+
+.colorBlue {
+	color: #6896ba;
+}
+
+.colorGray {
+	color: #bababa;
+}
+
+.colorOrange {
+	color : #cb7832;
+}
+
+.colorGreen {
+	color : #6a8759;
 }
 
 
@@ -133,4 +150,27 @@ td, th {
 .close {
 	display: block;
 }
+
+
+/* ----------------- user ----------------- */
+
+.requestBody, .requestHttp, .responseHttp {
+	background-color: #2f3640;
+    color: white;
+    padding: 0 17px;
+    border-radius: 20px;	
+}
+
+.requestBodyCode, .requestHttpCode, .responseHttpCode {
+	font-size: 17px;
+	margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
 
