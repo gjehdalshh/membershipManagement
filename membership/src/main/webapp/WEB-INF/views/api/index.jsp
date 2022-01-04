@@ -260,7 +260,8 @@
 			</div>
 			
 			<!-- 아이디 찾기  -->
-			<div><h1><a class="colorBlack" id="user/findId">아이디찾기</a></h1></div>
+			<div id="findId">
+				<div><h1><a class="colorBlack" id="user/findId">아이디찾기</a></h1></div>
 				<div class="urlH"><h4>/user/findInfo?page=1</h4></div>
 				<div><h2>Request</h2></div>
 				<div><h4>Request Fields:</h4></div>
@@ -339,9 +340,10 @@
 	</code>
 </pre>
 				</div>
-				
+			</div>
 				
 				<!-- 비밀번호 찾기 -->
+			<div id="findPw">
 				<div><h1><a class="colorBlack" id="user/findPw">비밀번호찾기</a></h1></div>
 				<div class="urlH"><h4>/user/findInfo?page=2</h4></div>
 				<div><h2>Request</h2></div>
@@ -421,8 +423,9 @@
 	</code>
 </pre>
 				</div>
-				
+			</div>	
 				<!-- 비밀번호 변경 -->
+			<div id="changePw">
 				<div><h2>Request</h2></div>
 				<div><h4>Request Fields:</h4></div>
 				<table>
@@ -488,8 +491,8 @@
 						<td>message</td><td>string</td><td>true</td><td></td><td>결과 메시지</td>
 					</tr>
 				</table>
-				<div><h4>Response HTTP Example:</h4></div>
-				<div class="responseHttp">
+			<div><h4>Response HTTP Example:</h4></div>
+			<div class="responseHttp">
 <pre class="responseHttpCode">
 	<code>
 <span class="colorGray">HTTP/1.1</span> <span class="colorBlue">200</span> OK
@@ -507,6 +510,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="chat">
 			<div>
 				<h1>Chat</h1>
@@ -514,7 +518,6 @@
 		</div>
 	</div>
 </div>
-
 
 <script defer src="/res/js/api/index.js?ver=55"></script>
 
