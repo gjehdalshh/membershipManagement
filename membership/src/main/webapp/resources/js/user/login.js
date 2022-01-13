@@ -8,9 +8,7 @@ moveJoin.onclick = function() {
 	location.href = '/user/join'
 }
 
-var login_btn = document.querySelector('.login_btn')
-
-login_btn.onclick = function() {
+function login_btn() {
 	var id = document.querySelector('.user_id')
 	var pw = document.querySelector('.user_pw')
 	
@@ -44,6 +42,12 @@ login_btn.onclick = function() {
 				
 		}
 	})
+}
+
+function enterLogin() {
+	if(window.event.keyCode == 13) {
+		login_btn()
+	}
 }
 
 function apiMove() {

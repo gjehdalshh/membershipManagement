@@ -165,6 +165,7 @@
 						<div>
 							<form action="/chat/home" method="get">
 								<input class="seeAllFriend" type="submit" value="전체보기">
+								<input type="hidden" name="page" value="${param.page}">
 							</form>
 						</div>
 					</div>
@@ -276,5 +277,6 @@
 			</div>
 		</c:if>
 	</div>
+</div>
 
 	<script defer src="/res/js/chat/home.js?ver=50"></script>

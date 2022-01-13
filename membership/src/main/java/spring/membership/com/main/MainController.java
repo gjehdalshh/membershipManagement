@@ -36,7 +36,9 @@ public class MainController {
 	// 메인 화면 
 	@GetMapping("/chat/home")
 	public void home(Model model, UserDTO dto, RelationDTO relDto) {
-		
+		relDto.setI_userFrom(dto.getI_user());
+		System.out.println(dto.getI_user());
+		System.out.println(relDto.getI_userFrom());
 		// 친구 리스트 뿌리기
 		model.addAttribute("friendList", service.selFriendList(relDto));
 		// 친구 수
@@ -48,6 +50,7 @@ public class MainController {
 		if(dto.getUser_name().equals("")) { // 해당하는 친구가 없다면
 			return;
 		}
+
 		// 친구 검색
 		model.addAttribute("searchList", service.searchUserList(dto));
 		// 친구 수
