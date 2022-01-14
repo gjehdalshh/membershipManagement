@@ -12,7 +12,7 @@
 
 <input class="setionIuser" type="hidden" value="${id.i_user}">
 <input class="param" type="hidden" value="${param.page}">
-
+<div onclick="test()" class="test">이동</div>
 <!-- 친구 추가 모달창 -->
 
 <div id="mw_temp" class="mw">
@@ -279,4 +279,4 @@
 	</div>
 </div>
 
-	<script defer src="/res/js/chat/home.js?ver=50"></script>
+	<script defer src="/res/js/chat/home.js?ver=58"></script>

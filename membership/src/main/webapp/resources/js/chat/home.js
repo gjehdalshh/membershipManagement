@@ -156,6 +156,9 @@ function chatListMove() {
 	location.href=`/chat/home?page=`+2
 }
 
+function test() {
+	location.href='/chat/test'
+}
 
 
 

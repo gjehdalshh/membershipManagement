@@ -12,10 +12,10 @@
 	</div>
 	<div class="login_div">
 		<div>
-			<input onkeyup="enterLogin()" class="user_id" type="text">
+			<input onkeyup="enterLogin()" class="user_id" type="text" value="gjehdalshh@naver.com">
 		</div>
 		<div>
-			<input onkeyup="enterLogin()" class="user_pw" type="password">
+			<input onkeyup="enterLogin()" class="user_pw" type="password" value="ehdals11">
 		</div>
 		<div>
 			<input onclick="login_btn()" class="login_btn" type="button" value="로그인">

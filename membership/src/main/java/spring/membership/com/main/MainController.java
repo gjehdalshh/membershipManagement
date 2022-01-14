@@ -107,6 +107,20 @@ public class MainController {
 	}
 	*/
 	
+	@GetMapping("/chat/test")
+	public void selUserTest() {}
+
+	@ResponseBody
+	@PostMapping("/chat/test")
+	public Map<String, Object> selUserTest(Model model, @RequestBody UserDTO dto) {
+		
+		Map<String, Object> val = new HashMap<String, Object>();
+		
+		val.put("result", service.selUserTest(dto));
+	
+		return val;
+	}
+	
 	
 	
 	
