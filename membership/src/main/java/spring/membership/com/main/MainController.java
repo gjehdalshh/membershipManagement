@@ -36,25 +36,38 @@ public class MainController {
 	// 메인 화면 
 	@GetMapping("/chat/home")
 	public void home(Model model, UserDTO dto, RelationDTO relDto) {
-		relDto.setI_userFrom(dto.getI_user());
-		System.out.println(dto.getI_user());
-		System.out.println(relDto.getI_userFrom());
+
 		// 친구 리스트 뿌리기
-		model.addAttribute("friendList", service.selFriendList(relDto));
+		//model.addAttribute("friendList", service.selFriendList(relDto));
 		// 친구 수
-		model.addAttribute("selFriendCount", service.selFriendCount(relDto));
+		//model.addAttribute("selFriendCount", service.selFriendCount(relDto));
 	}
 	
-	@PostMapping("/chat/home")
-	public void home(Model model, RelationDTO dto) {
-		if(dto.getUser_name().equals("")) { // 해당하는 친구가 없다면
-			return;
-		}
+	
+	// 친구 리스트 뿌리기 ajax
+	@ResponseBody
+	@PostMapping("/chat/home/friendListAjax")
+	public Map<String, Object> friendListAjax(Model model, @RequestBody RelationDTO relDto) {
 
-		// 친구 검색
-		model.addAttribute("searchList", service.searchUserList(dto));
-		// 친구 수
-		model.addAttribute("searchListCount", service.searchUserCount(dto));
+		Map<String, Object> val = new HashMap<String, Object>();
+		
+		val.put("selFriendList", service.selFriendList(relDto));
+		val.put("selFriendCount", service.selFriendCount(relDto));
+
+		return val;
+	}
+	
+	// 친구 검색 리스트 뿌리기 ajax
+	@ResponseBody
+	@PostMapping("/chat/home/friendSearchAjax")
+	public Map<String, Object> friendSearchAjax(Model model, @RequestBody RelationDTO relDto) {
+
+		Map<String, Object> val = new HashMap<String, Object>();
+
+		val.put("selFrinedSearch", service.searchUserList(relDto));
+		val.put("selFriendCount", service.searchUserCount(relDto));
+
+		return val;
 	}
 	
 	// 이름으로 친구 추가
@@ -106,23 +119,6 @@ public class MainController {
 		return val;
 	}
 	*/
-	
-	@GetMapping("/chat/test")
-	public void selUserTest() {}
-
-	@ResponseBody
-	@PostMapping("/chat/test")
-	public Map<String, Object> selUserTest(Model model, @RequestBody UserDTO dto) {
-		
-		Map<String, Object> val = new HashMap<String, Object>();
-		
-		val.put("result", service.selUserTest(dto));
-	
-		return val;
-	}
-	
-	
-	
 	
 	@GetMapping("/chat/chatList")
 	public void chatList() {

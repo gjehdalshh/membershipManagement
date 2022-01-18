@@ -221,6 +221,7 @@ body {
 	border: none;
 	font-size: 15px;
 	cursor: pointer;
+	margin-left: 6px;
 }
 
 .close_img {
@@ -246,7 +247,6 @@ body {
 
 .friendDiv {
 	display: flex;
-	margin-bottom: 20px;
 }
 
 .name {

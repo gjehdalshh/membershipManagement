@@ -25,7 +25,6 @@ public class Utils {
     }
 	
 	public int getSesstionIuser() {
-		System.out.println("bbb");
 		
 		System.out.println((UserDomain)hs.getAttribute("id"));
 		

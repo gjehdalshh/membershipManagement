@@ -5,7 +5,7 @@ var insertState1 = document.querySelector('.insertState1')
 var insertState2 = document.querySelector('.insertState2')
 var setionIuser = document.querySelector('.setionIuser')
 var param = document.querySelector('.param')
-
+friendListAnswer()
 
 friendInsert(1)
 
@@ -156,10 +156,94 @@ function chatListMove() {
 	location.href=`/chat/home?page=`+2
 }
 
-function test() {
-	location.href='/chat/test'
+function friendListAnswer() {
+	var param = {
+		i_user : setionIuser.value
+	}
+	
+	console.log(param)
+	fetch('/chat/home/friendListAjax', {
+		method : 'POST',
+		headers : {
+			'Content-Type' : 'application/json'
+		},
+		body:JSON.stringify(param)
+	}).then(function(res) {
+		return res.json()
+	}).then(function(data) {
+		friendListAjax(data.selFriendList)
+		friendCountAjax(data.selFriendCount.friendCount)
+	})
 }
 
+/* --------------------- 친구 리스트 뿌리기 -------------------- */
+let friendList = document.getElementById('friendListAjax')
+function friendListAjax(data) {
+	
+	for(let i = 0; i < data.length; i++) {
+		friendList.innerHTML += `
+			<div><img class="friendProfileImg" alt="" src="/res/img/person.jpg"></div>
+			<div>
+				<div>${data[i].user_name}</div>
+				<div>${data[i].stateMes}</div>
+			</div>
+		`
+	} 
+}
+
+
+/* ------------------ 친구 수 ----------------------- */
+let friendCount = document.getElementById('friendCount')
+function friendCountAjax(data) {
+	
+	friendCount.innerHTML = `
+		<div>친구 ${data}</div>
+	`
+}
+
+/* ----------------------- 친구 검색 리스트 뿌리기 ------------------ */
+let friendSearchName = document.querySelector('.friendSearchInput')
+
+function friendSearchAnswer() {
+	
+	var param = {
+		i_userFrom : setionIuser.value,
+		user_name : friendSearchName.value
+	}
+	
+	console.log(param)
+	fetch('/chat/home/friendSearchAjax', {
+		method : 'POST',
+		headers : {
+			'Content-Type' : 'application/json'
+		},
+		body:JSON.stringify(param)
+	}).then(function(res) {
+		return res.json()
+	}).then(function(data) {
+		console.log(data.selFrinedSearch)
+		friendSearchAjax(data.selFrinedSearch)
+	})
+	friendSearchName.value = ``
+	friendSearchDiv.style.display = 'none'
+}
+
+let friendSearch = document.getElementById('friendSearchAjax')
+function friendSearchAjax(data) {
+	
+	friendList.innerHTML = ``
+	friendSearch.innerHTML = ``
+	
+	for(let i = 0; i < data.length; i++) {
+		friendSearch.innerHTML += `
+			<div><img class="friendProfileImg" alt="" src="/res/img/person.jpg"></div>
+			<div>
+				<div>${data[i].user_name}</div>
+				<div>${data[i].stateMes}</div>
+			</div>
+		`
+	} 
+}
 
 
 

@@ -126,9 +126,4 @@ public class MainService {
 		
 		return mapper.searchUserCount(dto);
 	}
-	
-	
-	public List<UserDomain> selUserTest(UserDTO dto) {
-		return mapper.selUserTest(dto);
-	}
 }

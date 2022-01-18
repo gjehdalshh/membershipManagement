@@ -13,7 +13,7 @@ import spring.membership.com.dto.UserDTO;
 public interface MainMapper {
 	UserDomain selNameUser(UserDTO dto);
 	UserDomain selIdUser(UserDTO dto);
-int insFriendFrom(RelationDTO dto);
+	int insFriendFrom(RelationDTO dto);
 	int insFriendTo(RelationDTO dto);
 	RelationDTO selRelationUser(RelationDTO dto);
 	
@@ -26,7 +26,4 @@ int insFriendFrom(RelationDTO dto);
 
 	int delFriendFrom(RelationDTO dto);
 	int delFriendTo(RelationDTO dto);
-	
-	
-	List<UserDomain> selUserTest(UserDTO dto);
 }

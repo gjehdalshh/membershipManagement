@@ -138,9 +138,8 @@
 					<div class="border_div">
 						<form action="/chat/home?page=${param.page}" method="post">
 							<input class="friendSearchInput" type="text" name="user_name">
-							<span class="middleLine">|</span> <input
-								onclick="friendSearchBtn()" class="friendSearchBtn"
-								type="submit" value="친구검색">
+							<span class="middleLine">|</span>
+							<span onclick="friendSearchAnswer()" class="friendSearchBtn"> 친구검색</span>
 						</form>
 					</div>
 					<div>
@@ -160,7 +159,7 @@
 						</div>
 					</div>
 					<div class="flex_between">
-						<div class="friendCount">친구
+						<div id="friendCount" class="friendCount">친구
 							${selFriendCount.friendCount}${searchListCount.friendCount}</div>
 						<div>
 							<form action="/chat/home" method="get">
@@ -169,6 +168,8 @@
 							</form>
 						</div>
 					</div>
+					
+					
 					<c:choose>
 						<c:when test="${empty searchList}">
 							<c:forEach var="friendList" items="${friendList}">
@@ -200,6 +201,10 @@
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
+					
+					<!-- innerHtml friendListAjax -->
+					<div id="friendListAjax" class="friendDiv"></div>
+					<div id="friendSearchAjax" class="friendDiv"></div>
 				</div>
 			</div>
 		</c:if>
@@ -279,4 +284,4 @@
 	</div>
 </div>
 
-	<script defer src="/res/js/chat/home.js?ver=58"></script>
+	<script defer src="/res/js/chat/home.js?ver=68"></script>

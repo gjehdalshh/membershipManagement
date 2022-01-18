@@ -83,11 +83,6 @@
 		WHERE i_userFrom =
 		#{i_userTo} and i_userTo = #{i_userFrom}
 	</delete>
-	
-	
-	<select id="selUserTest" resultType="UserDomain">
-		SELECT * FROM usertable
-	</select>
 
 </mapper>
 
