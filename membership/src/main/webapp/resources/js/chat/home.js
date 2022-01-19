@@ -17,6 +17,7 @@ function friendSearchOpen() {
 	friendSearchDiv.style.display = 'flex'
 }
 function friendSearchClose() {
+	friendSearchName.value = ``
 	friendSearchDiv.style.display = 'none'
 }
 
@@ -156,6 +157,12 @@ function chatListMove() {
 	location.href=`/chat/home?page=`+2
 }
 
+
+function seeAllFriend() {
+	friendListAnswer()
+}
+
+
 function friendListAnswer() {
 	var param = {
 		i_user : setionIuser.value
@@ -179,6 +186,8 @@ function friendListAnswer() {
 /* --------------------- 친구 리스트 뿌리기 -------------------- */
 let friendList = document.getElementById('friendListAjax')
 function friendListAjax(data) {
+	
+	friendList.innerHTML = ``
 	
 	for(let i = 0; i < data.length; i++) {
 		friendList.innerHTML += `
@@ -221,21 +230,32 @@ function friendSearchAnswer() {
 	}).then(function(res) {
 		return res.json()
 	}).then(function(data) {
+		if(data.error == 'error') {
+			error()
+			return
+		}
+		if(data.error == undefined) {
 		console.log(data.selFrinedSearch)
+		console.log(data.selFriendCount)
 		friendSearchAjax(data.selFrinedSearch)
+		friendSearchCount(data.selFriendCount.friendCount)
+		}
 	})
 	friendSearchName.value = ``
 	friendSearchDiv.style.display = 'none'
 }
 
-let friendSearch = document.getElementById('friendSearchAjax')
+function error() {
+	friendCount.innerHTML = `<div>친구 0</div>`
+	friendList.innerHTML = ``
+}
+
 function friendSearchAjax(data) {
 	
 	friendList.innerHTML = ``
-	friendSearch.innerHTML = ``
 	
 	for(let i = 0; i < data.length; i++) {
-		friendSearch.innerHTML += `
+		friendList.innerHTML += `
 			<div><img class="friendProfileImg" alt="" src="/res/img/person.jpg"></div>
 			<div>
 				<div>${data[i].user_name}</div>
@@ -243,6 +263,12 @@ function friendSearchAjax(data) {
 			</div>
 		`
 	} 
+}
+
+function friendSearchCount(data) {
+	friendCount.innerHTML = `
+		<div>친구 ${data}</div>
+	`
 }
 
 

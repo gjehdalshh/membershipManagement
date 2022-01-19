@@ -12,7 +12,7 @@
 
 <input class="setionIuser" type="hidden" value="${id.i_user}">
 <input class="param" type="hidden" value="${param.page}">
-<div onclick="test()" class="test">이동</div>
+
 <!-- 친구 추가 모달창 -->
 
 <div id="mw_temp" class="mw">
@@ -136,11 +136,9 @@
 
 				<div class="friendSearchDiv">
 					<div class="border_div">
-						<form action="/chat/home?page=${param.page}" method="post">
-							<input class="friendSearchInput" type="text" name="user_name">
-							<span class="middleLine">|</span>
-							<span onclick="friendSearchAnswer()" class="friendSearchBtn"> 친구검색</span>
-						</form>
+						<input class="friendSearchInput" type="text" name="user_name">
+						<span class="middleLine">|</span>
+						<span onclick="friendSearchAnswer()" class="friendSearchBtn"> 친구검색</span>
 					</div>
 					<div>
 						<img onclick="friendSearchClose()" class="close_img" alt=""
@@ -159,52 +157,12 @@
 						</div>
 					</div>
 					<div class="flex_between">
-						<div id="friendCount" class="friendCount">친구
-							${selFriendCount.friendCount}${searchListCount.friendCount}</div>
-						<div>
-							<form action="/chat/home" method="get">
-								<input class="seeAllFriend" type="submit" value="전체보기">
-								<input type="hidden" name="page" value="${param.page}">
-							</form>
-						</div>
+						<div id="friendCount" class="friendCount">친구</div>
+						<div onclick="seeAllFriend()" class="seeAllFriend">전체보기</div>
 					</div>
-					
-					
-					<c:choose>
-						<c:when test="${empty searchList}">
-							<c:forEach var="friendList" items="${friendList}">
-								<div class="friendDiv">
-									<div>
-										<img class="friendProfileImg" alt="" src="/res/img/person.jpg">
-									</div>
-									<div>
-										<div class="name">${friendList.user_name}</div>
-										<div class="stateMessage">${friendList.stateMes}</div>
-									</div>
-								</div>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<c:forEach var="searchList" items="${searchList}">
-								<c:if test="${searchList.i_user != id.i_user}">
-									<div class="friendDiv">
-										<div>
-											<img class="friendProfileImg" alt=""
-												src="/res/img/person.jpg">
-										</div>
-										<div>
-											<div class="name">${searchList.user_name}</div>
-											<div class="stateMessage">${searchList.stateMes}</div>
-										</div>
-									</div>
-								</c:if>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
 					
 					<!-- innerHtml friendListAjax -->
 					<div id="friendListAjax" class="friendDiv"></div>
-					<div id="friendSearchAjax" class="friendDiv"></div>
 				</div>
 			</div>
 		</c:if>
@@ -284,4 +242,4 @@
 	</div>
 </div>
 
-	<script defer src="/res/js/chat/home.js?ver=68"></script>
+	<script defer src="/res/js/chat/home.js?ver=79"></script>

@@ -61,8 +61,12 @@ public class MainController {
 	@ResponseBody
 	@PostMapping("/chat/home/friendSearchAjax")
 	public Map<String, Object> friendSearchAjax(Model model, @RequestBody RelationDTO relDto) {
-
 		Map<String, Object> val = new HashMap<String, Object>();
+		
+		if(relDto.getUser_name().equals("")) {
+			val.put("error", "error");
+			return val;
+		}
 
 		val.put("selFrinedSearch", service.searchUserList(relDto));
 		val.put("selFriendCount", service.searchUserCount(relDto));

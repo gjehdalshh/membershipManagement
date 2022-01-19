@@ -43,11 +43,11 @@ html, body {
 
 .fg_change {
 	position: absolute;
-    width: 130;
+    width: 110px;
     background-color: white;
     z-index: 100;
     top: 74%;
-    left: 41%;
+    left: 40%;
     border: 0.1px solid gray;
 }
 
@@ -247,6 +247,7 @@ body {
 
 .friendDiv {
 	display: flex;
+	margin-bottom: 20px;
 }
 
 .name {
@@ -267,9 +268,9 @@ body {
 }
 
 .seeAllFriend {
-	background-color: white;
-	border: none;
-	cursor: pointer;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 7px;
 }
 
 .friendProfileImg {
