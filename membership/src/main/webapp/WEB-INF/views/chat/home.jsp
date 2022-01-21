@@ -81,11 +81,6 @@
 </div>
 
 
-
-
-
-
-
 <div id="main_div">
 	<div class="title_div">
 		<div>
@@ -166,8 +161,6 @@
 				</div>
 			</div>
 		</c:if>
-
-
 
 		<!-- 두번째 페이지 -->
 		<c:if test="${param.page == 2}">

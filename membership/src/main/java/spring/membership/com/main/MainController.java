@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import spring.membership.com.common.Utils;
 import spring.membership.com.domain.UserDomain;
 import spring.membership.com.dto.RelationDTO;
 import spring.membership.com.dto.UserDTO;
@@ -30,19 +31,15 @@ public class MainController {
 	
 	@Autowired
 	private MainService service;
+	
+	@Autowired
+	private HttpSession hs;
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	// 메인 화면 
 	@GetMapping("/chat/home")
-	public void home(Model model, UserDTO dto, RelationDTO relDto) {
-
-		// 친구 리스트 뿌리기
-		//model.addAttribute("friendList", service.selFriendList(relDto));
-		// 친구 수
-		//model.addAttribute("selFriendCount", service.selFriendCount(relDto));
-	}
-	
+	public void home() {}
 	
 	// 친구 리스트 뿌리기 ajax
 	@ResponseBody
@@ -53,7 +50,7 @@ public class MainController {
 		
 		val.put("selFriendList", service.selFriendList(relDto));
 		val.put("selFriendCount", service.selFriendCount(relDto));
-
+		
 		return val;
 	}
 	
@@ -107,22 +104,6 @@ public class MainController {
 		
 		return val;
 	}
-	
-	
-	/* list ajax로 뿌리기
-	@ResponseBody
-	@PostMapping("/chat/SearchProc")
-	public Map<String, Object> SearchProc(@RequestBody UserDTO dto) {
-		Map<String, Object> val = new HashMap<String, Object>();
-
-		List<UserDomain> list = service.searchUserList(dto);
-		for(int i = 0; i < list.size(); i++) {
-			val.put("result", list.get(i).getUser_name());
-		}
-		
-		return val;
-	}
-	*/
 	
 	@GetMapping("/chat/chatList")
 	public void chatList() {

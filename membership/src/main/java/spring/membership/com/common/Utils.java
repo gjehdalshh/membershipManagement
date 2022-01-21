@@ -10,9 +10,6 @@ import spring.membership.com.domain.UserDomain;
 
 public class Utils {
 	
-	@Autowired
-	private HttpSession hs;
-	
 	 private Utils() {}
 	
 	private static class InnerInstanceClazz {
@@ -24,12 +21,36 @@ public class Utils {
         return InnerInstanceClazz.uniqueInstance;
     }
 	
-	public int getSesstionIuser() {
+    
+    // 시간처리 함수
+	public String timeFormat(String dateTime) {
 		
-		System.out.println((UserDomain)hs.getAttribute("id"));
+		int time = Integer.parseInt(dateTime);
+		String getTime = "";
 		
-		//UserDomain vo = (UserDomain)hs.getAttribute("id");
-		//System.out.println("확인"+vo.getI_user());
-		return 1;
+		if (time < 60) {
+			getTime = time + "초 전";
+		} else if (time < 3600) {
+			getTime = time / 60 + "분 전";
+		} else if (time < 86400) {
+			getTime = time / 3600 + "시간 전";
+		} else if (time < 604800) {
+			getTime = time / 86400 + "일 전";
+		} else if (time < 2592000) {
+			getTime = time / 604800 + "주 전";
+		} else if (time < 31104000) {
+			getTime = time / 2592000 + "달 전";
+		} else {
+			getTime = time / 31104000 + "년 전";
+		}
+		
+		return getTime;
 	}
 }
+
+
+
+
+
+
+

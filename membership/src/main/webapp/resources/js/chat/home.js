@@ -58,7 +58,7 @@ function friendInsert(check) {
 		insertState1.style.display = 'none'
 	}
 }
-
+/* ------------------- 이름으로 친구추가 ------------------- */
 function friendNameInsertBtn() {
 	var friendName = document.querySelector('.friendName')
 	var friendPh = document.querySelector('.friendPh')
@@ -94,7 +94,7 @@ function friendNameInsertBtn() {
 	})
 }
 
-
+/* ---------------- 아아디로 친구추가 --------------------- */
 function friendIdInsertBtn() {
 	var friendId = document.querySelector('.friendId')
 	
@@ -189,15 +189,15 @@ function friendListAjax(data) {
 	
 	friendList.innerHTML = ``
 	
-	for(let i = 0; i < data.length; i++) {
+	data.forEach(function(data) {
 		friendList.innerHTML += `
 			<div><img class="friendProfileImg" alt="" src="/res/img/person.jpg"></div>
 			<div>
-				<div>${data[i].user_name}</div>
-				<div>${data[i].stateMes}</div>
+				<div>${data.user_name}</div>
+				<div>${data.stateMes}</div>
 			</div>
 		`
-	} 
+	})
 }
 
 
@@ -235,8 +235,7 @@ function friendSearchAnswer() {
 			return
 		}
 		if(data.error == undefined) {
-		console.log(data.selFrinedSearch)
-		console.log(data.selFriendCount)
+
 		friendSearchAjax(data.selFrinedSearch)
 		friendSearchCount(data.selFriendCount.friendCount)
 		}
@@ -254,15 +253,16 @@ function friendSearchAjax(data) {
 	
 	friendList.innerHTML = ``
 	
-	for(let i = 0; i < data.length; i++) {
+	
+	data.forEach(function(data) {
 		friendList.innerHTML += `
 			<div><img class="friendProfileImg" alt="" src="/res/img/person.jpg"></div>
 			<div>
-				<div>${data[i].user_name}</div>
-				<div>${data[i].stateMes}</div>
+				<div>${data.user_name}</div>
+				<div>${data.stateMes}</div>
 			</div>
 		`
-	} 
+	})
 }
 
 function friendSearchCount(data) {
